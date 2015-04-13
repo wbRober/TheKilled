@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+
+<html lang="pt-br">
+
+<head>
+	
+	<title>.: TheKilled :.</title>
+    <style>
+		*{
+		margin:0px auto;
+		padding:0px;
+		}
+		body{
+		background-color:#000;
+		background-image:url(img/bg.jpg);
+		background-size:cover;
+		background-repeat:no-repeat;
+		background-attachment:fixed;
+		background-position:55% 100%;
+		font-size:62.5%;
+		}
+		#all{
+		width:95%;
+		height:auto;
+		margin:auto;
+		color:#FFF;
+		font-weight:bold;
+		text-shadow:0em 0em 2em #00f;
+		}
+		header{
+		font-size:9em;
+		text-align:center;
+		}
+		nav{
+		text-align:center;
+		}
+		hr{
+		border:solid 0.2em #FFF;
+		margin:0.5em auto;
+		width:75%;
+		}
+		.btn{
+		height:1.5em;
+		border-radius:0.6em;
+		border-color:#fff;
+		border-width:0.1em;
+		font-size:3.8em;
+		margin:0.1em;
+		background-color:transparent;
+		color:#FFF;
+		font-weight:bold;
+		text-shadow:0em 0em 1em #00f;
+		}
+		section{
+		min-height:20em; 
+		margin:1em;
+		font-size:3.5em;
+		text-align:center;
+		background-image:url(img/sectionbg.png);
+		margin:1em;
+		border-radius:1em;
+		}
+		article{
+		max-width:80%;
+		text-align:center;
+		}
+		#regras, ul{
+		text-align:left;
+		}
+		ul{
+		list-style-type:circle;
+		margin-left:1em;
+		margin-right:1em;
+		margin-top:0.3em;
+		text-align:left;
+		}
+	</style>
+    <script>
+		function ajaxInt(){
+		var xmlhttp;
+		try{
+			xmlhttp=new XMLHttpRequest();
+				}catch(e){
+				try{
+					xmlhttp=new ActiveXObject("Msxml2.XMLHTTP");
+					}catch(ex){
+						try{
+							xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+							}catch(exc){
+								xmlhttp=false;
+							}
+					}
+				}
+			return xmlhttp;
+		}
+		function master(action){
+			cont=document.getElementById("content");
+			cont.innerHTML="Carregando";
+			ajax=ajaxInt();
+			var url='function.php?action='+action;
+				if(ajax){
+					ajax.open('GET',url,true);
+					ajax.onreadystatechange=function(){
+						if(ajax.readyState==4){
+							if(ajax.status==200){
+								cont.innerHTML=ajax.responseText;
+							}
+						}
+					
+					}
+				ajax.send(null);	
+			}
+		}
+	</script>
+	
+</head>
+
+<body>
+<div id="all">	
+	<header>
+    	~TheKilled~
+   </header>
+   <hr style="width:50%">
+   <nav>
+        <input class="btn" type="button" onClick="master('regras');" value=" Regras ">
+    	<input class="btn" type="button" onClick="master('eventos');" value=" Eventos ">
+    	<input class="btn" type="button" onClick="master('');" value=" Calendario ">
+    	<input class="btn" type="button" onClick="master('ajuda');" value=" Ajuda ">
+    	<input class="btn" type="button" onClick="master('sugestao');" value=" Sugestao ">
+    	<input class="btn" type="button" onClick="master('membros');" value=" Membros ">
+    	<input class="btn" type="button" onClick="master('');" value=" Login ">
+   </nav>
+   <hr>
+   <section>
+    	  
+		<article id="content">
+			<h2>Seje bem vindo ao portal</h2><h2>~TheKilled~</h2><br>
+			<p id="regras">
+				Regras:
+				<ul>
+					<li>HUMILDADE e RESPEITO antes de tudo</li>
+					<li>Nao desrespeitar nenhum membro do cla</li>
+                    <li>...</li>
+				</ul>
+			</p>
+      </article>
+      
+	</section>
+	
+   <footer>
+    	
+   </footer>
+
+</div>
+</body>
+</html>
